@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FS3 Malta Report Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        select:hover {
+            border-color: #667eea;
+        }
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            background-color: white;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
+        .info-box {
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: #555;
+        }
+        .info-box strong {
+            color: #333;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            color: #667eea;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FS3 Malta Report</h1>
+        <p class="subtitle">Yearly Statement of Earnings, Tax & Social Security</p>
+
+        <div class="info-box">
+            <strong>Report Details:</strong><br>
+            Frequency: Annual | Format: PDF<br>
+            File Name: FS3_EmployeeID_Year
+        </div>
+
+        <form id="fs3Form" method="POST" action="/reports/fs3/generate">
+            <div class="form-group">
+                <label for="employeeId">Select Employee</label>
+                <select id="employeeId" name="employeeId" required>
+                    <option value="">-- Choose an employee --</option>
+                    <option th:each="emp : ${employees}" 
+                            th:value="${emp.id}" 
+                            th:text="${emp.firstName} + ' ' + ${emp.surname}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="year">Select Tax Year</label>
+                <select id="year" name="year" required>
+                    <option value="">-- Choose a year --</option>
+                    <option th:each="yr : ${years}" 
+                            th:value="${yr}" 
+                            th:text="${yr}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn-primary">
+                    📥 Export PDF
+                </button>
+                <button type="button" class="btn-secondary" onclick="viewJSON()">
+                    👁️ View Data
+                </button>
+            </div>
+
+            <div class="loading" id="loading">
+                <span class="spinner"></span>Processing...
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('fs3Form').addEventListener('submit', function(e) {
+            const employeeId = document.getElementById('employeeId').value;
+            const year = document.getElementById('year').value;
+            
+            if (!employeeId || !year) {
+                e.preventDefault();
+                alert('Please select both employee and year');
+                return;
+            }
+            
+            // Show loading briefly, then let form submit naturally
+            document.getElementById('loading').style.display = 'block';
+            // Hide after 2 seconds (form will download by then)
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+            }, 2000);
+        });
+
+        function viewJSON() {
+            const employeeId = document.getElementById('employeeId').value;
+            const year = document.getElementById('year').value;
+            
+            if (!employeeId || !year) {
+                alert('Please select both employee and year');
+                return;
+            }
+            
+            window.location.href = `/reports/fs3/view/${employeeId}/${year}`;
+        }
+    </script>
+</body>
+</html>

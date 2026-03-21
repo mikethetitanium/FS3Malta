@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FS3 Malta Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .banner {
+            margin: 0;
+            border-radius: 0;
+            overflow: hidden;
+        }
+        .banner-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .form-content {
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+            border: 2px solid #4a90a4;
+            border-collapse: collapse;
+        }
+        .section-header {
+            background: #4a90a4;
+            color: white;
+            padding: 8px 12px;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .section-letter {
+            background: white;
+            color: #4a90a4;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        td {
+            border: 1px solid #ccc;
+            padding: 6px 8px;
+            height: 24px;
+        }
+        .label-cell {
+            background: #f9f9f9;
+            font-weight: 600;
+            width: 40%;
+            vertical-align: middle;
+        }
+        .value-cell {
+            background: white;
+            vertical-align: middle;
+            font-family: monospace;
+        }
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .two-col td {
+            width: 50%;
+        }
+        .button-group {
+            margin-top: 30px;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-pdf {
+            background: #4a90a4;
+            color: white;
+        }
+        .btn-pdf:hover {
+            background: #3a7a94;
+        }
+        .btn-back {
+            background: #f0f0f0;
+            color: #333;
+        }
+        .btn-back:hover {
+            background: #e0e0e0;
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+            }
+            .button-group {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="/banner.png" alt="FS3 Banner" class="banner-image">
+        </div>
+
+        <div class="form-content">
+            <!-- SECTION A: PAYEE INFORMATION -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-letter">A</div>
+                    PAYEE INFORMATION
+                </div>
+                <table>
+                    <tr>
+                        <td class="label-cell">Surname</td>
+                        <td class="value-cell" th:text="${report.surname}"></td>
+                        <td class="label-cell">For Year Ended 31 December</td>
+                        <td class="value-cell" th:text="${report.taxYear}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">First Name</td>
+                        <td class="value-cell" th:text="${report.firstName}"></td>
+                        <td class="label-cell">Payee's ID Card / IT Reg No.</td>
+                        <td class="value-cell" th:text="${report.payeeIdCard}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Address (House No.)</td>
+                        <td class="value-cell" th:text="${report.houseNo}"></td>
+                        <td class="label-cell">Payee's Social Security No.</td>
+                        <td class="value-cell" th:text="${report.socialSecurityNo}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Street</td>
+                        <td class="value-cell" th:text="${report.street}"></td>
+                        <td class="label-cell">Spouse's ID Card / IT Reg No.</td>
+                        <td class="value-cell" th:text="${report.spouseIdCard}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Locality</td>
+                        <td class="value-cell" th:text="${report.locality}"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Postcode</td>
+                        <td class="value-cell" th:text="${report.postcode}"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Telephone Number</td>
+                        <td class="value-cell" th:text="${report.telephoneNumber}"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- SECTION B: PERIOD -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-letter">B</div>
+                    PERIOD
+                </div>
+                <table>
+                    <tr>
+                        <td class="label-cell">From</td>
+                        <td class="value-cell" th:text="${#temporals.format(report.periodFrom, 'dd/MM/yyyy')}"></td>
+                        <td class="label-cell">To</td>
+                        <td class="value-cell" th:text="${#temporals.format(report.periodTo, 'dd/MM/yyyy')}"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- SECTION C: GROSS EMOLUMENTS -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-letter">C</div>
+                    GROSS EMOLUMENTS
+                </div>
+                <table>
+                    <tr>
+                        <td class="label-cell">Gross Emoluments (FSS Main/Other)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.grossEmoluments, 1, 2)}"></td>
+                        <td class="label-cell">Number of Overtime Hours</td>
+                        <td class="value-cell" th:text="${report.overtimeHours}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Overtime (Eligible for 15% tax)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.overtimeAmount, 1, 2)}"></td>
+                        <td class="label-cell">Director's Fees</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.directorsFees, 1, 2)}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Gross Emoluments (Part-time method)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.grossEmolumentsPartTime, 1, 2)}"></td>
+                        <td class="label-cell">Fringe Benefits (Total)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.fringeBenefitsTotal, 1, 2)}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Share Options (15%)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.shareOptions15, 1, 2)}"></td>
+                        <td class="label-cell">Total Gross Emoluments</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.totalGrossEmoluments, 1, 2)}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Cat 1 (Car)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.fringeBenefitsCat1, 1, 2)}"></td>
+                        <td class="label-cell">Cat 2 (Use of Assets)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.fringeBenefitsCat2, 1, 2)}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Cat 3 (Other)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.fringeBenefitsCat3, 1, 2)}"></td>
+                        <td class="label-cell">Non Taxable Car Cash Allowance</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.nonTaxableCarCashAllowance, 1, 2)}"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- SECTION D: TOTAL DEDUCTIONS -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-letter">D</div>
+                    TOTAL DEDUCTIONS
+                </div>
+                <table>
+                    <tr>
+                        <td class="label-cell">Tax Deductions (FSS Main)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.taxDeductionsMain, 1, 2)}"></td>
+                        <td class="label-cell">Tax Deductions (Eligible Overtime)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.taxDeductionsOvertime, 1, 2)}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Tax Deductions (Part-time)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.taxDeductionsPartTime, 1, 2)}"></td>
+                        <td class="label-cell">Tax Arrears Deductions</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.taxArrearsDeductions, 1, 2)}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">15% Tax on Share Options</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.taxShareOptions, 1, 2)}"></td>
+                        <td class="label-cell">Total Tax Deductions</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.totalTaxDeductions, 1, 2)}"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- SECTION E: SOCIAL SECURITY AND MATERNITY FUND -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-letter">E</div>
+                    SOCIAL SECURITY AND MATERNITY FUND INFORMATION
+                </div>
+                <table>
+                    <tr>
+                        <td class="label-cell">Basic Weekly Wage (€)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.basicWeeklyWage, 1, 2)}"></td>
+                        <td class="label-cell">Number of Weeks</td>
+                        <td class="value-cell" th:text="${report.weeksContributed}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">SSC Category</td>
+                        <td class="value-cell" th:text="${report.sscCategory}"></td>
+                        <td class="label-cell">Social Security Contributions (Payee)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.sscPayeeAmount, 1, 2)}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Social Security Contributions (Payer)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.sscPayerAmount, 1, 2)}"></td>
+                        <td class="label-cell">Total SSC</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.totalSSC, 1, 2)}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Maternity Fund Contributions (Payer)</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.maternityFundPayerAmount, 1, 2)}"></td>
+                        <td class="label-cell">Weeks Without Pay (From)</td>
+                        <td class="value-cell" th:text="${report.unpaidLeaveFrom != null ? #temporals.format(report.unpaidLeaveFrom, 'dd/MM/yyyy') : ''}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Weeks Without Pay (To)</td>
+                        <td class="value-cell" th:text="${report.unpaidLeaveTo != null ? #temporals.format(report.unpaidLeaveTo, 'dd/MM/yyyy') : ''}"></td>
+                        <td class="label-cell">Weeks Without Pay (Number)</td>
+                        <td class="value-cell" th:text="${report.unpaidLeaveWeeks}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Total Payee SSC</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.totalPayeeSSC, 1, 2)}"></td>
+                        <td class="label-cell">Voluntary Occupational Pension Scheme</td>
+                        <td class="value-cell" th:text="${#numbers.formatDecimal(report.voluntaryPensionContribution, 1, 2)}"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- SECTION F: PAYER INFORMATION -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-letter">F</div>
+                    PAYER INFORMATION
+                </div>
+                <table>
+                    <tr>
+                        <td class="label-cell">Business Name</td>
+                        <td class="value-cell" th:text="${report.businessName}"></td>
+                        <td class="label-cell">Payer PE Number</td>
+                        <td class="value-cell" th:text="${report.payerPENumber}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Business Address</td>
+                        <td class="value-cell" th:text="${report.businessAddress}"></td>
+                        <td class="label-cell">Date</td>
+                        <td class="value-cell" th:text="${#temporals.format(report.reportGeneratedDate, 'dd/MM/yyyy')}"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Locality</td>
+                        <td class="value-cell" th:text="${report.businessLocality}"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Postcode</td>
+                        <td class="value-cell" th:text="${report.businessPostcode}"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Telephone Number</td>
+                        <td class="value-cell" th:text="${report.businessTelephoneNumber}"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Principal's Full Name</td>
+                        <td class="value-cell" th:text="${report.principalFullName}"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">Principal's Position</td>
+                        <td class="value-cell" th:text="${report.principalPosition}"></td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="button-group">
+                <button class="btn-pdf" onclick="window.print()">🖨️ Print / Save as PDF</button>
+                <button class="btn-back" onclick="window.history.back()">← Back</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
