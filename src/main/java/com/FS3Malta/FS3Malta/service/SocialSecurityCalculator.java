@@ -17,7 +17,7 @@ public class SocialSecurityCalculator {
         int weeksContributed=0;
                 
         for (WeeklyRecord weeklyRecord : weeklyRecords) {
-            if(weeklyRecord.getWageAmount()!=null && weeklyRecord.getWageAmount().compareTo(BigDecimal.ZERO))>0){
+            if(weeklyRecord.getWageAmount()!=null && weeklyRecord.getWageAmount().compareTo(BigDecimal.ZERO) > 0){
                 totalWages = totalWages.add(weeklyRecord.getWageAmount());
                 weeksContributed++;
             }
@@ -33,7 +33,7 @@ public class SocialSecurityCalculator {
    
     private String determineCategory(List<WeeklyRecord> weeklyRecords) {
         boolean hasContributionAfterJuly = weeklyRecords.stream()
-                .anyMatch(weeklyRecord -> weeklyRecord.getMonth() > 7 && weeklyRecord.getWageAmount().compareTo(BigDecimal.ZERO) > 0);
+                .anyMatch(weeklyRecord -> weeklyRecord.getWageMonth() > 7 && weeklyRecord.getWageAmount().compareTo(BigDecimal.ZERO) > 0);
         return hasContributionAfterJuly ? "Category B" : "Category A";
     }
 }

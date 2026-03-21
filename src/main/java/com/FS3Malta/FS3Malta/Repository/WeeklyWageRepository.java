@@ -7,10 +7,10 @@ import java.util.List;
 import com.FS3Malta.FS3Malta.model.WeeklyWage;
 
 public interface WeeklyWageRepository extends JpaRepository<WeeklyWage, Long> {
-@Query("SELECT ww FROM WeeklyWage ww WHERE ww.employee.id = :employeeId AND ww.year = :year ORDER BY ww.month, ww.week")
+@Query("SELECT ww FROM WeeklyWage ww WHERE ww.employee.id = :employeeId AND ww.wageYear = :year ORDER BY ww.wageMonth, ww.wageWeek")
     List<WeeklyWage> findByEmployeeIdAndYear(@Param("employeeId") Long employeeId, @Param("year") Integer year);
     
-    @Query("SELECT ww FROM WeeklyWage ww WHERE ww.employee.id = :employeeId ORDER BY ww.year DESC, ww.month DESC")
+    @Query("SELECT ww FROM WeeklyWage ww WHERE ww.employee.id = :employeeId ORDER BY ww.wageYear DESC, ww.wageMonth DESC")
     List<WeeklyWage> findByEmployeeId(@Param("employeeId") Long employeeId);
     
     @Query(value = "SELECT COUNT(*) FROM weekly_wages WHERE employee_id = :employeeId AND wage_year = :year AND amount > 0", nativeQuery = true)
