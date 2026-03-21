@@ -5,9 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
+
 public class WeeklyRecord {
-private Integer month;
-private Integer week;
+private int wageMonth;
+private int wageWeek;
 private BigDecimal wageAmount;
+
+ public WeeklyRecord(int month, int week, BigDecimal amount) {
+        this.wageMonth = month;
+        this.wageWeek = week;
+        this.wageAmount = amount;
+    }
 }

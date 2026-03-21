@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,7 +26,9 @@ public class WeeklyWage {
     @Column(name = "weekly_wage_id")
     private Long id;
 
-    @ManyToOne
+   
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
 
@@ -40,4 +43,14 @@ public class WeeklyWage {
 
     @Column(nullable = false)
     private BigDecimal wageAmount;
+
+    public WeeklyWage() {}
+
+    public WeeklyWage(Employee employee, int year, int month, int week, BigDecimal amount) {
+        this.employee = employee;
+        this.wageYear = year;
+        this.wageMonth = month;
+        this.wageWeek = week;
+        this.wageAmount = amount;
+    }
 }

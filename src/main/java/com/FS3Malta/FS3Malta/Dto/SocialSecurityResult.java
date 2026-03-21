@@ -11,6 +11,6 @@ import lombok.Data;
 @Builder
 public class SocialSecurityResult {
 private BigDecimal totalWages;
-private BigDecimal socialSecurityContribution;
+private int weeksContributed;
 private String category;
 }
