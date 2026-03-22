@@ -16,7 +16,7 @@ FS3Malta is a Spring Boot application designed to generate FS3 reports for emplo
 ## How to Run the Application
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/mikethetitanium/FS3Malta.git
    ```
 2. Navigate to the project directory:
    ```bash
@@ -44,7 +44,7 @@ The application uses an embedded H2 database. To view the database:
    ```properties
    spring.h2.console.enabled=true
    spring.h2.console.path=/h2-console
-   spring.datasource.url=jdbc:h2:mem:testdb
+   spring.datasource.url=jdbc:h2:mem:payrolldb
    spring.datasource.username=sa
    spring.datasource.password=
    ```
@@ -55,7 +55,7 @@ The application uses an embedded H2 database. To view the database:
    ```
 
 3. Use the following credentials to log in:
-   - **JDBC URL**: `jdbc:h2:mem:testdb`
+   - **JDBC URL**: `jdbc:h2:mem:payrolldb`
    - **Username**: `sa`
    - **Password**: (leave blank)
 
@@ -96,10 +96,5 @@ The application uses an embedded H2 database. To view the database:
 
 ---
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-
----
-
 ## Author
-FS3Malta Development Team
+Michael Mukosi John - Mercans offline assignment
