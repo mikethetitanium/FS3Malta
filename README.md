@@ -96,5 +96,24 @@ The application uses an embedded H2 database. To view the database:
 
 ---
 
+## Exported report and screenshots
+
+### Screenshots
+
+**1. Landing page**  
+![Landing page](https://github.com/mikethetitanium/FS3Malta/blob/master/screenshots/1%20Landing%20page.png)
+
+**2. Direct exported report**  
+![Direct exported report](https://github.com/mikethetitanium/FS3Malta/blob/master/screenshots/2%20Direct%20exported%20report.png)
+
+**3. View report on browser**  
+![View report on browser](https://github.com/mikethetitanium/FS3Malta/blob/master/screenshots/3%20view%20report%20on%20browser.png)
+
+### Exported PDF
+
+[Download FS3 Report PDF](https://github.com/mikethetitanium/FS3Malta/blob/master/screenshots/FS3_123456A_2025%20(1).pdf)
+
+---
+
 ## Author
 Michael Mukosi John - Mercans offline assignment
