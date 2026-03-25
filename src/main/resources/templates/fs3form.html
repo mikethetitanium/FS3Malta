@@ -27,8 +27,10 @@
             background: #fff;
             position: relative;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            overflow: hidden;
             border: 1.5px solid var(--fs-border);
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
         }
 
         /* BANNER */
@@ -204,7 +206,8 @@
         .watermark {
             position: absolute;
             bottom: 50px;
-            left: 200px;
+            left: auto;
+            right: 0;
             font-size: 450px;
             color: rgba(102, 153, 188, 0.08);
             font-weight: 900;
@@ -217,21 +220,36 @@
         .side-text {
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            position: absolute;
-            left: 5px;
-            bottom: 50px;
             font-size: 10px;
             color: var(--fs-section-bg);
+            padding: 8px 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1.2px solid var(--fs-border);
         }
 
         .web-address {
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            position: absolute;
-            right: 5px;
-            bottom: 50px;
             font-size: 10px;
             color: var(--fs-section-bg);
+            padding: 8px 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1.2px solid var(--fs-border);
+        }
+
+        .form-content {
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            overflow: hidden;
         }
 
         /* FOOTER */
@@ -246,11 +264,9 @@
 <body>
 
 <div class="form-page">
-    <div class="watermark">FS3</div>
     <div class="side-text">See the Office's Data Protection Policy on mtca.gov.mt</div>
-    <div class="web-address">www.mtca.gov.mt</div>
-
-    <!-- BANNER -->
+    <div class="form-content">
+    <div class="watermark">FS3</div>
     <div class="banner">
         <img src="../static/banner.png" alt="FS3 Banner" style="width:100%; display:block; margin:0; padding:0;">
     </div>
@@ -665,11 +681,11 @@
         <div style="width:52%; border-right:1.2px solid var(--fs-border);">
             <table style="width:100%; border-collapse:collapse;">
                 <tr>
-                    <td style="width:38%; font-weight:bold; font-size:11px; border-top:none; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Business Name</td>
+                    <td style="width:38%; font-weight:bold; font-size:11px; border-top:none; border-left:1.2px solid var(--fs-border); border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Business Name</td>
                     <td style="border-top:none; border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); vertical-align:top; padding:4px 8px;">
+                    <td style="font-weight:bold; font-size:11px; border-left:1.2px solid var(--fs-border); border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); vertical-align:top; padding:4px 8px;">
                         Business Address<br>
                         <span style="font-size:9px; color:#666; font-weight:normal;">House No.</span><br><br>
                         <span style="font-size:9px; color:#666; font-weight:normal;">Street</span><br><br>
@@ -678,23 +694,23 @@
                     <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Postcode</td>
+                    <td style="font-weight:bold; font-size:11px; border-left:1.2px solid var(--fs-border); border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Postcode</td>
                     <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Telephone Number</td>
+                    <td style="font-weight:bold; font-size:11px; border-left:1.2px solid var(--fs-border); border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Telephone Number</td>
                     <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Principal's Full Name</td>
+                    <td style="font-weight:bold; font-size:11px; border-left:1.2px solid var(--fs-border); border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Principal's Full Name</td>
                     <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Principal's Position</td>
+                    <td style="font-weight:bold; font-size:11px; border-left:1.2px solid var(--fs-border); border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Principal's Position</td>
                     <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
                 </tr>
                 <tr>
-                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:none;">Principal's Signature</td>
+                    <td style="font-weight:bold; font-size:11px; border-left:1.2px solid var(--fs-border); border-right:1.2px solid var(--fs-border); border-bottom:none;">Principal's Signature</td>
                     <td style="border-right:none; border-left:none; border-bottom:none; height:35px;"></td>
                 </tr>
             </table>
@@ -756,6 +772,8 @@
             </div>
         </div>
     </div>
+    </div><!-- end form-content -->
+    <div class="web-address">www.mtca.gov.mt</div>
 </div>
 
 </body>
