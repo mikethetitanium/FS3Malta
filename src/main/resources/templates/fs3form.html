@@ -22,19 +22,20 @@
         }
 
         .form-page {
-            width: 900px;
+            width: 1050px;
             margin: 0 auto;
             background: #fff;
             position: relative;
             box-shadow: 0 0 15px rgba(0,0,0,0.1);
             overflow: hidden;
-            border: 1px solid #ccc;
+            border: 1.5px solid var(--fs-border);
         }
 
         /* BANNER */
         .banner {
             width: 100%;
             line-height: 0;
+            display: block;
         }
 
         .logo-box {
@@ -75,13 +76,13 @@
         .section-bar {
             background-color: white;
             color: black;
-            padding: 3px 0;
+            padding: 0;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             display: flex;
-            align-items: center;
-            border-top: 1px solid var(--fs-border);
-            border-bottom: 1px solid var(--fs-border);
+            align-items: stretch;
+            border-top: 1.2px solid var(--fs-border);
+            border-bottom: 1.2px solid var(--fs-border);
         }
 
         .section-bar-label {
@@ -89,21 +90,25 @@
             display: inline-flex;
             align-items: center;
             align-self: stretch;
-            padding: 3px 12px;
+            padding: 4px 10px;
             border-right: 1.5px solid var(--fs-border);
+            font-size: 13px;
+            font-weight: bold;
         }
 
         .section-letter {
             background-color: var(--fs-section-bg);
             color: white;
             border: 1.5px solid white;
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            margin-right: 12px;
+            margin-right: 8px;
             font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
         }
 
         /* TABLE STYLING */
@@ -112,9 +117,13 @@
             border-collapse: collapse;
         }
 
+        table:first-of-type {
+            border-top: none;
+        }
+
         td {
             border: 1.2px solid var(--fs-border);
-            padding: 6px 8px;
+            padding: 4px 8px;
             vertical-align: top;
             font-size: 11px;
         }
@@ -149,11 +158,11 @@
         }
 
         .char-box {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border: 1.2px solid var(--fs-border);
             text-align: center;
-            line-height: 20px;
+            line-height: 24px;
             margin-right: -1.2px;
             font-weight: bold;
             background: white;
@@ -244,11 +253,11 @@
 
     <!-- BANNER -->
     <div class="banner">
-        <img src="../static/banner.png" alt="FS3 Banner" style="width:100%; display:block;">
+        <img src="../static/banner.png" alt="FS3 Banner" style="width:100%; display:block; margin:0; padding:0;">
     </div>
 
     <!-- SECTION A -->
-    <div class="section-bar"><div class="section-bar-label"><span class="section-letter">A</span> PAYEE INFORMATION</div></div>
+    <div class="section-bar" style="border-top:none;"><div class="section-bar-label"><span class="section-letter">A</span> PAYEE INFORMATION</div></div>
     <table>
         <tr>
             <!-- LEFT COLUMN: personal fields as 2-col grid -->
@@ -345,26 +354,25 @@
         <div style="display:flex; align-items:center; padding:2px 8px; flex:1;">
             <div style="display:flex; flex-direction:column;">
                 <div style="display:flex; align-items:center;">
-                    <div style="height:20px; border:1.2px solid var(--fs-border); border-right:none; padding:0 6px; display:flex; align-items:center; white-space:nowrap; font-weight:bold; font-size:11px; color:var(--fs-section-bg);">B1 From</div>
+                    <div style="height:24px; border:1.2px solid var(--fs-border); border-right:none; padding:0 6px; display:flex; align-items:center; white-space:nowrap; font-weight:bold; font-size:11px; color:var(--fs-section-bg);">B1 From</div>
                     <div class="char-box"></div><div class="char-box"></div>
-                    <div style="width:8px; height:20px; border:1.2px solid var(--fs-border); border-left:none; border-right:none;"></div>
+                    <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);"></div>
                     <div class="char-box"></div><div class="char-box"></div>
-                    <div style="width:8px; height:20px; border:1.2px solid var(--fs-border); border-left:none; border-right:none;"></div>
+                    <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);"></div>
                     <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
-                    <div style="width:20px; height:20px; border:1.2px solid var(--fs-border); border-left:none;"></div>
                 </div>
-                <div style="display:flex; font-size:9px; color:#666;">
+                <div style="display:flex; font-size:9px; color:#666; margin-top:1px;">
                     <span style="visibility:hidden; padding:0 6px; font-size:11px;">B1 From</span>
-                    <span style="width:20px; text-align:center;">d</span>
-                    <span style="width:20px; text-align:center;">d</span>
-                    <span style="width:8px;"></span>
-                    <span style="width:20px; text-align:center;">m</span>
-                    <span style="width:20px; text-align:center;">m</span>
-                    <span style="width:8px;"></span>
-                    <span style="width:20px; text-align:center;">y</span>
-                    <span style="width:20px; text-align:center;">y</span>
-                    <span style="width:20px; text-align:center;">y</span>
-                    <span style="width:20px; text-align:center;">y</span>
+                    <span style="width:24px; text-align:center;">d</span>
+                    <span style="width:24px; text-align:center;">d</span>
+                    <span style="width:6px;"></span>
+                    <span style="width:24px; text-align:center;">m</span>
+                    <span style="width:24px; text-align:center;">m</span>
+                    <span style="width:6px;"></span>
+                    <span style="width:24px; text-align:center;">y</span>
+                    <span style="width:24px; text-align:center;">y</span>
+                    <span style="width:24px; text-align:center;">y</span>
+                    <span style="width:24px; text-align:center;">y</span>
                 </div>
             </div>
         </div>
@@ -372,26 +380,25 @@
         <div style="display:flex; align-items:center; padding:2px 8px; flex:1;">
             <div style="display:flex; flex-direction:column;">
                 <div style="display:flex; align-items:center;">
-                    <div style="height:20px; border:1.2px solid var(--fs-border); border-right:none; padding:0 6px; display:flex; align-items:center; white-space:nowrap; font-weight:bold; font-size:11px; color:var(--fs-section-bg);">B2 To</div>
+                    <div style="height:24px; border:1.2px solid var(--fs-border); border-right:none; padding:0 6px; display:flex; align-items:center; white-space:nowrap; font-weight:bold; font-size:11px; color:var(--fs-section-bg);">B2 To</div>
                     <div class="char-box"></div><div class="char-box"></div>
-                    <div style="width:8px; height:20px; border:1.2px solid var(--fs-border); border-left:none; border-right:none;"></div>
+                    <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);"></div>
                     <div class="char-box"></div><div class="char-box"></div>
-                    <div style="width:8px; height:20px; border:1.2px solid var(--fs-border); border-left:none; border-right:none;"></div>
+                    <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);"></div>
                     <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
-                    <div style="flex:1; min-width:20px; height:20px; border:1.2px solid var(--fs-border); border-left:none;"></div>
                 </div>
-                <div style="display:flex; font-size:9px; color:#666;">
+                <div style="display:flex; font-size:9px; color:#666; margin-top:1px;">
                     <span style="visibility:hidden; padding:0 6px; font-size:11px;">B2 To</span>
-                    <span style="width:20px; text-align:center;">d</span>
-                    <span style="width:20px; text-align:center;">d</span>
-                    <span style="width:8px;"></span>
-                    <span style="width:20px; text-align:center;">m</span>
-                    <span style="width:20px; text-align:center;">m</span>
-                    <span style="width:8px;"></span>
-                    <span style="width:20px; text-align:center;">y</span>
-                    <span style="width:20px; text-align:center;">y</span>
-                    <span style="width:20px; text-align:center;">y</span>
-                    <span style="width:20px; text-align:center;">y</span>
+                    <span style="width:24px; text-align:center;">d</span>
+                    <span style="width:24px; text-align:center;">d</span>
+                    <span style="width:6px;"></span>
+                    <span style="width:24px; text-align:center;">m</span>
+                    <span style="width:24px; text-align:center;">m</span>
+                    <span style="width:6px;"></span>
+                    <span style="width:24px; text-align:center;">y</span>
+                    <span style="width:24px; text-align:center;">y</span>
+                    <span style="width:24px; text-align:center;">y</span>
+                    <span style="width:24px; text-align:center;">y</span>
                 </div>
             </div>
         </div>
