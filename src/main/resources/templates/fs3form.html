@@ -88,7 +88,8 @@
             background-color: #CEEBF0;
             display: inline-flex;
             align-items: center;
-            padding: 3px 12px 3px 0;
+            align-self: stretch;
+            padding: 3px 12px;
             border-right: 1.5px solid var(--fs-border);
         }
 
@@ -336,9 +337,8 @@
     </table>
 
     <!-- SECTION B -->
-    <div style="display:flex; align-items:stretch; background:#fff; border-top:1px solid var(--fs-border); border-bottom:1px solid var(--fs-border);">
-        <!-- B label -->
-        <div class="section-bar-label" style="padding:3px 12px;">
+    <div class="section-bar" style="padding:0;">
+        <div class="section-bar-label" style="align-self:stretch; display:flex; align-items:center;">
             <span class="section-letter">B</span> PERIOD
         </div>
         <!-- B1 From -->
@@ -522,6 +522,85 @@
                 Non Taxable Car Cash Allowance (50% of Allowance up to a maximum of €1170)
             </td>
             <td style="border-top:none;"></td>
+        </tr>
+    </table>
+
+    <!-- SECTION D -->
+    <div class="section-bar"><div class="section-bar-label"><span class="section-letter">D</span> TOTAL DEDUCTIONS</div></div>
+    <table class="c-table" style="table-layout:fixed; width:100%;">
+        <colgroup>
+            <col style="width:28%;">
+            <col style="width:42px;">
+            <col style="width:160px;">
+            <col style="width:22%;">
+            <col style="width:42px;">
+            <col style="width:160px;">
+        </colgroup>
+        <tr style="font-size:11px; font-weight:bold;">
+            <td style="border:none;"></td>
+            <td style="border:none;"></td>
+            <td style="border:none; text-align:center;">€</td>
+            <td style="border:none;"></td>
+            <td style="border:none;"></td>
+            <td style="border:none; text-align:center;">€</td>
+        </tr>
+        <!-- D1 / D3 -->
+        <tr>
+            <td>Tax Deductions (FSS Main or FSS Other)</td>
+            <td>D1</td>
+            <td style="padding:5px 6px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td>Tax Arrears Deductions</td>
+            <td>D3</td>
+            <td style="padding:5px 6px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+        </tr>
+        <!-- D1A / D3a -->
+        <tr>
+            <td>Tax Deductions (Eligible Overtime)</td>
+            <td>D1A</td>
+            <td style="padding:5px 6px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td>15% tax on Share Options</td>
+            <td>D3a</td>
+            <td style="padding:5px 6px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+        </tr>
+        <!-- D2 / empty -->
+        <tr>
+            <td>Tax Deductions (FSS Part-time)</td>
+            <td>D2</td>
+            <td style="padding:5px 6px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td colspan="3" style="border:none;"></td>
+        </tr>
+        <!-- NB note / D4 -->
+        <tr>
+            <td colspan="3" style="font-size:9px; border-top:none; border-right:none;">
+                NB: If part-time tax is less than the relative rate the whole emoluments will be charged at normal rates.
+            </td>
+            <td style="font-weight:bold; font-size:11px; text-align:right; border-left:none; border-right:none;">Total Tax Deductions</td>
+            <td>D4</td>
+            <td style="padding:5px 6px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
         </tr>
     </table>
 
