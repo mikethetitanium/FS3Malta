@@ -155,6 +155,20 @@
             margin-top: 2px;
         }
 
+        /* SECTION C SPECIFIC */
+        .c-table td:first-child {
+            border: none;
+        }
+        .c-table td:nth-child(2) {
+            border: none;
+            font-weight: bold;
+            font-size: 11px;
+            color: var(--fs-field-id);
+            white-space: nowrap;
+            width: 40px;
+            padding: 6px 6px;
+        }
+
         /* SECTION E SPECIFIC */
         .e-table td {
             text-align: center;
@@ -373,31 +387,125 @@
     </div>
 
     <!-- SECTION C -->
-    <div class="section-bar"><span class="section-letter">C</span> GROSS EMOLUMENTS</div>
-    <table>
-        <tr style="text-align: right; font-weight: bold;">
-            <td style="border:none;"></td>
-            <td style="border:none; width:120px; font-size:14px;">€</td>
-            <td style="border:none; width:45px; font-size:14px;">c</td>
-            <td style="border:none; width:220px;"></td>
+    <div class="section-bar"><span class="section-letter">C</span> GROSS EMOLUMENTS <span style="margin-left:auto; display:inline-block; width:18px; height:18px; border:1.5px solid white;"></span></div>
+    <table class="c-table" style="table-layout:fixed;">
+        <tr style="font-size:11px; font-weight:bold;">
+            <td style="border:none; width:45%;"></td>
+            <td style="border:none; width:18%; text-align:center;">€</td>
+            <td style="border:none; width:7%; text-align:left; padding-left:4px; color:var(--fs-field-id);"></td>
+            <td style="border:none; width:30%; text-align:center;">€</td>
         </tr>
+        <!-- C1 -->
         <tr>
-            <td>Gross Emoluments (FSS Main or FSS Other applies) <span class="field-id">C1</span></td>
-            <td style="border-right:none;"><div class="box-grid" style="justify-content: flex-end;"><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div></div></td>
-            <td><div class="box-grid"><div class="char-box"></div><div class="char-box"></div></div></td>
-            <td rowspan="2">
-                <span class="label">Number of Overtime Hours</span>
+            <td style="font-size:11px;">Gross Emoluments (FSS Main or FSS Other applies)</td>
+            <td style="padding:6px 4px;">
                 <div class="box-grid">
-                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
-                    <div style="padding: 0 4px; font-weight: bold;">.</div>
-                    <div class="char-box"></div><div class="char-box"></div>
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap; padding-left:6px;">C1</td>
+            <td rowspan="2" style="vertical-align:top;">
+                <span class="label" style="font-size:10px;">Number of Overtime Hours</span>
+                <div style="display:flex; align-items:center; margin-top:4px;">
+                    <div class="box-grid">
+                        <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                    </div>
+                    <span style="padding:0 3px; font-weight:bold;">.</span>
+                    <div class="box-grid">
+                        <div class="char-box"></div><div class="char-box"></div>
+                    </div>
                 </div>
             </td>
         </tr>
+        <!-- C1A -->
         <tr>
-            <td>Overtime (Eligible for 15% tax deduction) <span class="field-id">C1A</span></td>
-            <td style="border-right:none;"><div class="box-grid" style="justify-content: flex-end;"><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div></div></td>
-            <td><div class="box-grid"><div class="char-box"></div><div class="char-box"></div></div></td>
+            <td style="font-size:11px;">Overtime (Eligible for 15% tax deduction)</td>
+            <td style="padding:6px 4px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap; padding-left:6px;">C1A</td>
+        </tr>
+        <!-- C1B -->
+        <tr>
+            <td style="font-size:11px;">Director's Fees</td>
+            <td style="padding:6px 4px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap; padding-left:6px;">C1B</td>
+            <td rowspan="4" style="vertical-align:top; padding-top:4px;">
+                <span class="label" style="font-size:10px;">Breakdown of Fringe Benefits</span>
+                <div style="margin-top:4px;">
+                    <div style="display:flex; align-items:center; margin-bottom:4px; font-size:10px;">
+                        <span style="width:55px; color:var(--fs-field-id); font-weight:bold;">Cat 1 C5</span>
+                        <div class="box-grid"><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div></div>
+                    </div>
+                    <div style="display:flex; align-items:center; margin-bottom:4px; font-size:10px;">
+                        <span style="width:55px; color:var(--fs-field-id); font-weight:bold;">Cat 2 C6</span>
+                        <div class="box-grid"><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div></div>
+                    </div>
+                    <div style="display:flex; align-items:center; font-size:10px;">
+                        <span style="width:55px; color:var(--fs-field-id); font-weight:bold;">Cat 3 C7</span>
+                        <div class="box-grid"><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div></div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <!-- C2 -->
+        <tr>
+            <td style="font-size:11px;">Gross Emoluments (FSS Part-time method applies)</td>
+            <td style="padding:6px 4px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap; padding-left:6px;">C2</td>
+        </tr>
+        <!-- C3 -->
+        <tr>
+            <td style="font-size:10px;">Fringe Benefits - Excluding Share Options <span style="font-size:9px;">(Total of Boxes (C5+C6+C7)-C8)</span></td>
+            <td style="padding:6px 4px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap; padding-left:6px;">C3</td>
+        </tr>
+        <!-- C3a -->
+        <tr>
+            <td style="font-size:11px;">Share Options fringe benefits taxed at 15%</td>
+            <td style="padding:6px 4px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap; padding-left:6px;">C3a</td>
+        </tr>
+        <!-- C4 -->
+        <tr>
+            <td style="font-size:11px; font-weight:bold;">Total Gross Emoluments and Fringe Benefits</td>
+            <td style="padding:6px 4px;">
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+            <td style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap; padding-left:6px;">C4</td>
+            <td style="vertical-align:top;">
+                <div style="display:flex; align-items:center; gap:6px; font-size:10px;">
+                    <span style="color:var(--fs-field-id); font-weight:bold;">C8</span>
+                    <div class="box-grid"><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div></div>
+                </div>
+            </td>
+        </tr>
+        <!-- footer note -->
+        <tr>
+            <td colspan="3" style="font-size:10px; text-align:center; border-top:none;">
+                Non Taxable Car Cash Allowance (50% of Allowance up to a maximum of €1170)
+            </td>
+            <td style="border-top:none;"></td>
         </tr>
     </table>
 
