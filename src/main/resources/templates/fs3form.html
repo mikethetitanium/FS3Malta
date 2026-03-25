@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FS3 - Final Settlement System Form</title>
+    <style>
+        :root {
+            --fs-banner-bg: #6699bc;
+            --fs-section-bg: #3a75a7;
+            --fs-border: #88b0cc;
+            --fs-text: #222;
+            --fs-field-id: #3a75a7;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            color: var(--fs-text);
+        }
+
+        .form-page {
+            width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #ccc;
+        }
+
+        /* BANNER */
+        .banner {
+            width: 100%;
+            line-height: 0;
+        }
+
+        .logo-box {
+            width: 180px;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 1.1;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-symbol {
+            font-size: 36px;
+            margin-right: 10px;
+            color: #003366;
+        }
+
+        .fs3-large {
+            font-size: 54px;
+            font-weight: 900;
+            margin: 0 30px;
+            letter-spacing: -3px;
+        }
+
+        .banner-titles h1 {
+            font-size: 19px;
+            margin: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .banner-titles p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* SECTION HEADERS */
+        .section-bar {
+            background-color: var(--fs-section-bg);
+            color: white;
+            padding: 3px 12px;
+            font-weight: bold;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid #fff;
+        }
+
+        .section-letter {
+            background-color: white;
+            color: var(--fs-section-bg);
+            width: 18px;
+            height: 18px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            font-size: 12px;
+        }
+
+        /* TABLE STYLING */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1.2px solid var(--fs-border);
+            padding: 6px 8px;
+            vertical-align: top;
+            font-size: 11px;
+        }
+
+        .label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .field-id {
+            float: right;
+            font-weight: bold;
+            color: var(--fs-field-id);
+            font-size: 11px;
+        }
+
+        /* INPUTS */
+        input[type="text"] {
+            width: 98%;
+            border: none;
+            border-bottom: 1px solid transparent;
+            outline: none;
+            font-size: 12px;
+            background: transparent;
+        }
+
+        /* CHARACTER BOXES */
+        .box-grid {
+            display: flex;
+            margin-top: 3px;
+        }
+
+        .char-box {
+            width: 20px;
+            height: 20px;
+            border: 1.2px solid var(--fs-border);
+            text-align: center;
+            line-height: 20px;
+            margin-right: -1.2px;
+            font-weight: bold;
+            background: white;
+        }
+
+        .sub-label-grid {
+            display: flex;
+            font-size: 8px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        /* SECTION E SPECIFIC */
+        .e-table td {
+            text-align: center;
+            padding: 3px;
+        }
+
+        .e-header {
+            background-color: #f2f6f9;
+            font-weight: bold;
+        }
+
+        /* WATERMARK */
+        .watermark {
+            position: absolute;
+            bottom: 50px;
+            left: 200px;
+            font-size: 450px;
+            color: rgba(102, 153, 188, 0.08);
+            font-weight: 900;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* SIDE TEXT */
+        .side-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            position: absolute;
+            left: 5px;
+            bottom: 50px;
+            font-size: 10px;
+            color: var(--fs-section-bg);
+        }
+
+        .web-address {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            position: absolute;
+            right: 5px;
+            bottom: 50px;
+            font-size: 10px;
+            color: var(--fs-section-bg);
+        }
+
+        /* FOOTER */
+        .footer-note {
+            padding: 15px;
+            font-size: 10px;
+            font-style: italic;
+            line-height: 1.3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-page">
+    <div class="watermark">FS3</div>
+    <div class="side-text">See the Office's Data Protection Policy on mtca.gov.mt</div>
+    <div class="web-address">www.mtca.gov.mt</div>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <img src="../static/banner.png" alt="FS3 Banner" style="width:100%; display:block;">
+    </div>
+
+    <!-- SECTION A -->
+    <div class="section-bar"><span class="section-letter">A</span> PAYEE INFORMATION</div>
+    <table>
+        <tr>
+            <td width="55%">
+                <span class="label">Surname</span>
+                <input type="text">
+            </td>
+            <td width="45%">
+                <span class="field-id">A1</span>
+                <span class="label">For Year Ended 31 December</span>
+                <div class="box-grid">
+                    <div class="char-box">2</div><div class="char-box">0</div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+                <div class="sub-label-grid" style="gap:15px; margin-left: 5px;"><span>y</span><span>y</span><span>y</span><span>y</span></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="label">First Name</span>
+                <input type="text">
+            </td>
+            <td>
+                <span class="field-id">A2</span>
+                <span class="label">Payee's ID Card / IT Reg. No.</span>
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="3">
+                <span class="label">Address</span>
+                <span style="font-size:9px; color:#666;">House No.</span><br>
+                <input type="text"><br>
+                <span style="font-size:9px; color:#666;">Street</span><br>
+                <input type="text"><br>
+                <span style="font-size:9px; color:#666;">Locality</span><br>
+                <input type="text">
+            </td>
+            <td>
+                <span class="field-id">A3</span>
+                <span class="label">Payee's Social Security No.</span>
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="field-id">A4</span>
+                <span class="label">Spouse's ID Card / IT Reg. No.</span>
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div style="display:flex;">
+                    <div style="flex:1;">
+                        <span class="label">Postcode</span>
+                        <input type="text" style="border-bottom:1px solid #ddd; width:100px;">
+                    </div>
+                    <div style="flex:2;">
+                        <span class="label">Telephone Number</span>
+                        <input type="text" style="border-bottom:1px solid #ddd; width:150px;">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- SECTION B -->
+    <div class="section-bar"><span class="section-letter">B</span> PERIOD</div>
+    <table>
+        <tr>
+            <td width="50%">
+                <div style="display:flex; align-items:center;">
+                    <span class="label" style="margin-right:10px;">B1 From</span>
+                    <div class="box-grid">
+                        <div class="char-box"></div><div class="char-box"></div>
+                        <div style="width:8px"></div>
+                        <div class="char-box"></div><div class="char-box"></div>
+                        <div style="width:8px"></div>
+                        <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                    </div>
+                </div>
+                <div class="sub-label-grid" style="margin-left: 65px; gap:16px;">
+                    <span>d d</span><span>m m</span><span>y y y y</span>
+                </div>
+            </td>
+            <td width="50%">
+                <div style="display:flex; align-items:center;">
+                    <span class="label" style="margin-right:10px;">B2 To</span>
+                    <div class="box-grid">
+                        <div class="char-box"></div><div class="char-box"></div>
+                        <div style="width:8px"></div>
+                        <div class="char-box"></div><div class="char-box"></div>
+                        <div style="width:8px"></div>
+                        <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                    </div>
+                </div>
+                <div class="sub-label-grid" style="margin-left: 55px; gap:16px;">
+                    <span>d d</span><span>m m</span><span>y y y y</span>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- SECTION C -->
+    <div class="section-bar"><span class="section-letter">C</span> GROSS EMOLUMENTS</div>
+    <table>
+        <tr style="text-align: right; font-weight: bold;">
+            <td style="border:none;"></td>
+            <td style="border:none; width:120px; font-size:14px;">€</td>
+            <td style="border:none; width:45px; font-size:14px;">c</td>
+            <td style="border:none; width:220px;"></td>
+        </tr>
+        <tr>
+            <td>Gross Emoluments (FSS Main or FSS Other applies) <span class="field-id">C1</span></td>
+            <td style="border-right:none;"><div class="box-grid" style="justify-content: flex-end;"><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div></div></td>
+            <td><div class="box-grid"><div class="char-box"></div><div class="char-box"></div></div></td>
+            <td rowspan="2">
+                <span class="label">Number of Overtime Hours</span>
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                    <div style="padding: 0 4px; font-weight: bold;">.</div>
+                    <div class="char-box"></div><div class="char-box"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Overtime (Eligible for 15% tax deduction) <span class="field-id">C1A</span></td>
+            <td style="border-right:none;"><div class="box-grid" style="justify-content: flex-end;"><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div></div></td>
+            <td><div class="box-grid"><div class="char-box"></div><div class="char-box"></div></div></td>
+        </tr>
+    </table>
+
+    <!-- SECTION E -->
+    <div class="section-bar"><span class="section-letter">E</span> SOCIAL SECURITY AND MATERNITY FUND INFORMATION</div>
+    <table class="e-table">
+        <tr class="e-header">
+            <td colspan="4">Basic Weekly Wage</td>
+            <td colspan="6">Social Security Contributions</td>
+            <td colspan="2">Maternity Fund</td>
+            <td colspan="3">Weeks Without Pay</td>
+        </tr>
+        <tr style="font-size: 9px; font-weight: bold;">
+            <td width="40">€</td><td width="30">C</td><td width="40">Number</td><td width="40">Category</td>
+            <td width="40">Payee €</td><td width="30">C</td><td width="40">Payer €</td><td width="30">C</td><td width="40" style="background:#eef4f9;">Total SSC €</td><td width="30" style="background:#eef4f9;">C</td>
+            <td width="40">Payer €</td><td width="30">C</td>
+            <td width="40">From</td><td width="40">To</td><td width="40">Number</td>
+        </tr>
+        <tr height="25">
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+        <tr>
+            <td colspan="8" style="border:none; text-align:right; font-weight:bold; padding-right:15px;">Total</td>
+            <td style="background:#eef4f9;"></td><td style="background:#eef4f9;"></td>
+            <td colspan="5" style="border:none; text-align: left;"><span class="field-id" style="float:none; margin-left: 10px;">E1</span></td>
+        </tr>
+    </table>
+
+    <div style="padding: 10px 15px; display: flex; align-items: center;">
+        <span class="label" style="margin-right: 15px;">Voluntary Occupational Pension Scheme contribution or payment</span>
+        <span style="font-size:14px; font-weight: bold; margin-right: 5px;">€</span>
+        <div class="box-grid">
+            <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+        </div>
+    </div>
+
+    <!-- SECTION F -->
+    <div class="section-bar"><span class="section-letter">F</span> PAYER INFORMATION</div>
+    <table>
+        <tr>
+            <td width="50%">
+                <span class="label">Business Name</span>
+                <input type="text"><br><br>
+                <span class="label">Business Address</span>
+                <span style="font-size:9px; color:#666;">House No.</span><br>
+                <input type="text"><br>
+                <span style="font-size:9px; color:#666;">Street</span><br>
+                <input type="text"><br>
+                <span style="font-size:9px; color:#666;">Locality</span><br>
+                <input type="text"><br>
+                <span style="font-size:9px; color:#666;">Postcode</span><br>
+                <input type="text" style="width:100px; border-bottom:1px solid #ddd;">
+                <br><br>
+                <span class="label">Telephone Number</span>
+                <input type="text" style="width:150px; border-bottom:1px solid #ddd;">
+            </td>
+            <td width="50%">
+                <span class="field-id">F1</span>
+                <span class="label">Payer PE Number</span>
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+                <br>
+                <span class="field-id">F2</span>
+                <span class="label">Date</span>
+                <div class="box-grid">
+                    <div class="char-box"></div><div class="char-box"></div><div style="width:6px"></div><div class="char-box"></div><div class="char-box"></div><div style="width:6px"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                </div>
+                <div class="sub-label-grid" style="gap:14px; margin-left: 4px;"><span>d d</span><span>m m</span><span>y y y y</span></div>
+                
+                <br>
+                <span class="label">Principal's Full Name</span>
+                <input type="text" style="border-bottom:1px solid #ddd;">
+                <br><br>
+                <span class="label">Principal's Position</span>
+                <input type="text" style="border-bottom:1px solid #ddd;">
+                <br><br>
+                <span class="label">Principal's Signature</span>
+                <div style="height: 35px; border-bottom:1px solid #ddd;"></div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="footer-note">
+        This form is to be completed in quadruplicate. The original is to be sent to the Malta Tax and Customs Administration with the FS7, two copies are to be given to the Payee and the other copy is to be retained by the Payer.
+    </div>
+</div>
+
+</body>
+</html>
