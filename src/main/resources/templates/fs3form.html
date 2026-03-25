@@ -193,11 +193,10 @@
         /* SECTION E SPECIFIC */
         .e-table td {
             text-align: center;
-            padding: 3px;
+            padding: 2px 3px;
         }
-
         .e-header {
-            background-color: #f2f6f9;
+            background-color: #eef4f9;
             font-weight: bold;
         }
 
@@ -613,32 +612,47 @@
 
     <!-- SECTION E -->
     <div class="section-bar"><div class="section-bar-label"><span class="section-letter">E</span> SOCIAL SECURITY AND MATERNITY FUND INFORMATION</div></div>
-    <table class="e-table">
-        <tr class="e-header">
-            <td colspan="4">Basic Weekly Wage</td>
-            <td colspan="6">Social Security Contributions</td>
-            <td colspan="2">Maternity Fund</td>
-            <td colspan="3">Weeks Without Pay</td>
+    <table class="e-table" style="table-layout:fixed; width:100%; font-size:9px;">
+        <!-- Row 1: group headers -->
+        <tr class="e-header" style="text-align:center; font-weight:bold; font-size:9px;">
+            <td colspan="4" style="background:#eef4f9;">Basic Weekly Wage</td>
+            <td colspan="6" style="background:#eef4f9;">Social Security Contributions</td>
+            <td colspan="2" style="background:#eef4f9;">Maternity Fund Contributions</td>
+            <td colspan="3" style="background:#eef4f9;">Weeks Without Pay</td>
         </tr>
-        <tr style="font-size: 9px; font-weight: bold;">
-            <td width="40">€</td><td width="30">C</td><td width="40">Number</td><td width="40">Category</td>
-            <td width="40">Payee €</td><td width="30">C</td><td width="40">Payer €</td><td width="30">C</td><td width="40" style="background:#eef4f9;">Total SSC €</td><td width="30" style="background:#eef4f9;">C</td>
-            <td width="40">Payer €</td><td width="30">C</td>
-            <td width="40">From</td><td width="40">To</td><td width="40">Number</td>
+        <!-- Row 2: sub-headers -->
+        <tr style="text-align:center; font-weight:bold; font-size:9px; background:#eef4f9;">
+            <td>€</td><td>C</td><td>Number</td><td>Category</td>
+            <td colspan="2">Payee</td>
+            <td colspan="2">Payer</td>
+            <td colspan="2">Total SSC</td>
+            <td colspan="2">Payer</td>
+            <td>From</td><td>To</td><td>Number</td>
         </tr>
-        <tr height="25">
-            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <!-- Row 3: sub-sub-headers -->
+        <tr style="text-align:center; font-weight:bold; font-size:9px; background:#eef4f9;">
+            <td></td><td></td><td></td><td></td>
+            <td>€</td><td>C</td>
+            <td>€</td><td>C</td>
+            <td>€</td><td>C</td>
+            <td>€</td><td>C</td>
+            <td></td><td></td><td></td>
         </tr>
-        <tr>
-            <td colspan="8" style="border:none; text-align:right; font-weight:bold; padding-right:15px;">Total</td>
-            <td style="background:#eef4f9;"></td><td style="background:#eef4f9;"></td>
-            <td colspan="5" style="border:none; text-align: left;"><span class="field-id" style="float:none; margin-left: 10px;">E1</span></td>
+        <!-- Data rows -->
+        <tr style="height:22px;"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr style="height:22px;"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr style="height:22px;"><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <!-- Total row -->
+        <tr style="font-weight:bold; font-size:9px;">
+            <td colspan="4" style="text-align:right; border-right:none;">Total</td>
+            <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            <td colspan="3" style="border-left:none; text-align:left; padding-left:8px; font-size:11px; color:var(--fs-field-id); font-weight:bold;">E1</td>
         </tr>
     </table>
 
-    <div style="padding: 10px 15px; display: flex; align-items: center;">
-        <span class="label" style="margin-right: 15px;">Voluntary Occupational Pension Scheme contribution or payment</span>
-        <span style="font-size:14px; font-weight: bold; margin-right: 5px;">€</span>
+    <div style="padding:6px 15px; display:flex; align-items:center; border-bottom:1.2px solid var(--fs-border);">
+        <span style="font-size:10px; font-weight:bold; margin-right:10px;">Voluntary Occupational Pension Scheme contribution or payment</span>
+        <span style="font-size:11px; font-weight:bold; margin-right:4px;">€</span>
         <div class="box-grid">
             <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
         </div>
@@ -646,53 +660,101 @@
 
     <!-- SECTION F -->
     <div class="section-bar"><div class="section-bar-label"><span class="section-letter">F</span> PAYER INFORMATION</div></div>
-    <table>
-        <tr>
-            <td width="50%">
-                <span class="label">Business Name</span>
-                <input type="text"><br><br>
-                <span class="label">Business Address</span>
-                <span style="font-size:9px; color:#666;">House No.</span><br>
-                <input type="text"><br>
-                <span style="font-size:9px; color:#666;">Street</span><br>
-                <input type="text"><br>
-                <span style="font-size:9px; color:#666;">Locality</span><br>
-                <input type="text"><br>
-                <span style="font-size:9px; color:#666;">Postcode</span><br>
-                <input type="text" style="width:100px; border-bottom:1px solid #ddd;">
-                <br><br>
-                <span class="label">Telephone Number</span>
-                <input type="text" style="width:150px; border-bottom:1px solid #ddd;">
-            </td>
-            <td width="50%">
-                <span class="field-id">F1</span>
-                <span class="label">Payer PE Number</span>
+    <div style="display:flex; align-items:stretch;">
+        <!-- Left: business info table -->
+        <div style="width:52%; border-right:1.2px solid var(--fs-border);">
+            <table style="width:100%; border-collapse:collapse;">
+                <tr>
+                    <td style="width:38%; font-weight:bold; font-size:11px; border-top:none; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Business Name</td>
+                    <td style="border-top:none; border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); vertical-align:top; padding:4px 8px;">
+                        Business Address<br>
+                        <span style="font-size:9px; color:#666; font-weight:normal;">House No.</span><br><br>
+                        <span style="font-size:9px; color:#666; font-weight:normal;">Street</span><br><br>
+                        <span style="font-size:9px; color:#666; font-weight:normal;">Locality</span>
+                    </td>
+                    <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Postcode</td>
+                    <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Telephone Number</td>
+                    <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Principal's Full Name</td>
+                    <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);">Principal's Position</td>
+                    <td style="border-right:none; border-left:none; border-bottom:1.2px solid var(--fs-border);"></td>
+                </tr>
+                <tr>
+                    <td style="font-weight:bold; font-size:11px; border-left:none; border-right:1.2px solid var(--fs-border); border-bottom:none;">Principal's Signature</td>
+                    <td style="border-right:none; border-left:none; border-bottom:none; height:35px;"></td>
+                </tr>
+            </table>
+        </div>
+        <!-- Right: F1, F2 and footer note -->
+        <div style="width:48%; padding:10px 14px; display:flex; flex-direction:column; gap:12px;">
+            <!-- F1 -->
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap;">F1</span>
+                <span style="font-weight:bold; font-size:11px; margin-right:8px;">Payer PE Number</span>
                 <div class="box-grid">
-                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
                 </div>
-                <br>
-                <span class="field-id">F2</span>
-                <span class="label">Date</span>
-                <div class="box-grid">
-                    <div class="char-box"></div><div class="char-box"></div><div style="width:6px"></div><div class="char-box"></div><div class="char-box"></div><div style="width:6px"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+            </div>
+            <!-- F2 -->
+            <div>
+                <div style="display:flex; align-items:center; gap:8px; margin-bottom:0;">
+                    <span style="font-weight:bold; font-size:11px; color:var(--fs-field-id); white-space:nowrap;">F2</span>
+                    <span style="font-weight:bold; font-size:11px; margin-right:4px;">Date</span>
+                    <!-- dd group -->
+                    <div style="display:flex; flex-direction:column; align-items:center;">
+                        <div class="box-grid">
+                            <div class="char-box"></div><div class="char-box"></div>
+                        </div>
+                        <div style="display:flex; font-size:9px; color:#666; margin-top:2px;">
+                            <span style="width:24px; text-align:center;">d</span>
+                            <span style="width:24px; text-align:center;">d</span>
+                        </div>
+                    </div>
+                    <div style="width:8px;"></div>
+                    <!-- mm group -->
+                    <div style="display:flex; flex-direction:column; align-items:center;">
+                        <div class="box-grid">
+                            <div class="char-box"></div><div class="char-box"></div>
+                        </div>
+                        <div style="display:flex; font-size:9px; color:#666; margin-top:2px;">
+                            <span style="width:24px; text-align:center;">m</span>
+                            <span style="width:24px; text-align:center;">m</span>
+                        </div>
+                    </div>
+                    <div style="width:8px;"></div>
+                    <!-- yyyy group -->
+                    <div style="display:flex; flex-direction:column; align-items:center;">
+                        <div class="box-grid">
+                            <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                        </div>
+                        <div style="display:flex; font-size:9px; color:#666; margin-top:2px;">
+                            <span style="width:24px; text-align:center;">y</span>
+                            <span style="width:24px; text-align:center;">y</span>
+                            <span style="width:24px; text-align:center;">y</span>
+                            <span style="width:24px; text-align:center;">y</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="sub-label-grid" style="gap:14px; margin-left: 4px;"><span>d d</span><span>m m</span><span>y y y y</span></div>
-                
-                <br>
-                <span class="label">Principal's Full Name</span>
-                <input type="text" style="border-bottom:1px solid #ddd;">
-                <br><br>
-                <span class="label">Principal's Position</span>
-                <input type="text" style="border-bottom:1px solid #ddd;">
-                <br><br>
-                <span class="label">Principal's Signature</span>
-                <div style="height: 35px; border-bottom:1px solid #ddd;"></div>
-            </td>
-        </tr>
-    </table>
-
-    <div class="footer-note">
-        This form is to be completed in quadruplicate. The original is to be sent to the Malta Tax and Customs Administration with the FS7, two copies are to be given to the Payee and the other copy is to be retained by the Payer.
+            </div>
+            <!-- Footer note -->
+            <div style="font-size:10px; font-style:italic; line-height:1.4; margin-top:auto;">
+                This form is to be completed in quadruplicate. The original is to be sent to the Malta Tax and Customs Administration with the FS7, two copies are to be given to the Payee and the other copy is to be retained by the Payer.
+            </div>
+        </div>
     </div>
 </div>
 
