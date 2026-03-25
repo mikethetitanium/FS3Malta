@@ -225,73 +225,89 @@
     <div class="section-bar"><span class="section-letter">A</span> PAYEE INFORMATION</div>
     <table>
         <tr>
-            <td width="55%">
-                <span class="label">Surname</span>
-                <input type="text">
-            </td>
-            <td width="45%">
-                <span class="field-id">A1</span>
-                <span class="label">For Year Ended 31 December</span>
-                <div class="box-grid">
-                    <div class="char-box">2</div><div class="char-box">0</div><div class="char-box"></div><div class="char-box"></div>
-                </div>
-                <div class="sub-label-grid" style="gap:15px; margin-left: 5px;"><span>y</span><span>y</span><span>y</span><span>y</span></div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span class="label">First Name</span>
-                <input type="text">
-            </td>
-            <td>
-                <span class="field-id">A2</span>
-                <span class="label">Payee's ID Card / IT Reg. No.</span>
-                <div class="box-grid">
-                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td rowspan="3">
-                <span class="label">Address</span>
-                <span style="font-size:9px; color:#666;">House No.</span><br>
-                <input type="text"><br>
-                <span style="font-size:9px; color:#666;">Street</span><br>
-                <input type="text"><br>
-                <span style="font-size:9px; color:#666;">Locality</span><br>
-                <input type="text">
-            </td>
-            <td>
-                <span class="field-id">A3</span>
-                <span class="label">Payee's Social Security No.</span>
-                <div class="box-grid">
-                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <span class="field-id">A4</span>
-                <span class="label">Spouse's ID Card / IT Reg. No.</span>
-                <div class="box-grid">
-                    <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="display:flex;">
-                    <div style="flex:1;">
+            <!-- LEFT COLUMN: personal fields as 2-col grid -->
+            <td width="55%" rowspan="4" style="padding:0; vertical-align:top; height:1px;">
+                <div style="display:grid; grid-template-columns:35% 65%; height:100%; min-height:100%; align-items:stretch;">
+                    <div style="border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); padding:6px 8px;">
+                        <span class="label">Surname</span>
+                    </div>
+                    <div style="border-bottom:1.2px solid var(--fs-border); padding:6px 8px;">
+                        <input type="text">
+                    </div>
+                    <div style="border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); padding:6px 8px;">
+                        <span class="label">First Name</span>
+                    </div>
+                    <div style="border-bottom:1.2px solid var(--fs-border); padding:6px 8px;">
+                        <input type="text">
+                    </div>
+                    <div style="border-right:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); padding:6px 8px; vertical-align:top;">
+                        <span class="label">Address</span>
+                        <div style="font-size:9px; color:#666; margin-top:4px;">House No.</div>
+                        <div style="font-size:9px; color:#666; margin-top:16px;">Street</div>
+                        <div style="font-size:9px; color:#666; margin-top:16px;">Locality</div>
+                    </div>
+                    <div style="border-bottom:1.2px solid var(--fs-border); padding:6px 8px; vertical-align:top;">
+                        <input type="text" style="margin-bottom:6px;"><br>
+                        <input type="text" style="margin-bottom:6px;"><br>
+                        <input type="text">
+                    </div>
+                    <div style="border-right:1.2px solid var(--fs-border); padding:6px 8px;">
                         <span class="label">Postcode</span>
-                        <input type="text" style="border-bottom:1px solid #ddd; width:100px;">
+                        <span class="label" style="display:block; margin-top:15px;">Telephone Number</span>
                     </div>
-                    <div style="flex:2;">
-                        <span class="label">Telephone Number</span>
-                        <input type="text" style="border-bottom:1px solid #ddd; width:150px;">
+                    <div style="padding:6px 8px;">
+                        <input type="text" style="margin-bottom:6px;"><br>
+                        <input type="text">
+                    </div>
+                </div>
+            </td>
+
+            <!-- RIGHT COLUMN: A1-A4 in one cell, no row dividers -->
+            <td width="45%" rowspan="4" style="vertical-align:top; border-left:1.2px solid var(--fs-border);">
+                <div style="display:flex; align-items:center; gap:16px; margin-bottom:10px;">
+                    <span class="label">For Year Ended 31 December</span>
+                    <div style="display:flex; align-items:flex-start; gap:8px;">
+                        <span class="field-id" style="float:none; font-size:11px; margin-top:2px;">A1</span>
+                        <div>
+                            <div class="box-grid">
+                                <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                            </div>
+                            <div class="sub-label-grid" style="gap:15px;"><span>y</span><span>y</span><span>y</span><span>y</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-bottom:10px;">
+                    <span class="label">Payee's ID Card / IT Reg. No.</span>
+                    <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+                        <span class="field-id" style="float:none; font-size:11px;">A2</span>
+                        <div class="box-grid">
+                            <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-bottom:10px;">
+                    <span class="label">Payee's Social Security No.</span>
+                    <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+                        <span class="field-id" style="float:none; font-size:11px;">A3</span>
+                        <div class="box-grid">
+                            <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="label">Spouse's ID Card / IT Reg. No.</span>
+                    <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+                        <span class="field-id" style="float:none; font-size:11px;">A4</span>
+                        <div class="box-grid">
+                            <div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div><div class="char-box"></div>
+                        </div>
                     </div>
                 </div>
             </td>
         </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
     </table>
 
     <!-- SECTION B -->
