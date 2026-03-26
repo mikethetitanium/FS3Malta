@@ -12,6 +12,10 @@
   .filter-bar { display: none !important; }
   body { background: white; padding: 0; }
   .form-page { box-shadow: none; border: none; width: 100%; }
+  @page {
+    margin: 0;
+    size: A4 landscape;
+  }
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
@@ -35,7 +39,7 @@
 
 <!-- FILTER BAR -->
 <div class="filter-bar">
-  <form method="get" action="/reports/fs3/view" style="display:flex; align-items:center; justify-content:center; gap:16px; width:100%; flex-wrap:wrap;">
+  <form method="get" action="/reports/fs3/view" style="display:flex; align-items:center; justify-content:center; gap:16px; width:100%; flex-wrap:wrap;" onsubmit="return validateForm()">
     <label for="empSelect">Employee:</label>
     <select id="empSelect" name="employeeId">
       <option value="">-- Select Employee --</option>
@@ -345,11 +349,22 @@
 </div>
 
 <script>
+function validateForm() {
+  var emp = document.getElementById('empSelect').value;
+  var year = document.getElementById('yearSelect').value;
+  if (!emp || !year) {
+    alert('Please select both an employee and a year before generating the report.');
+    return false;
+  }
+  return true;
+}
+
 function exportPDF() {
   // Inject a style that forces background graphics for this print session
   var style = document.createElement('style');
   style.id = 'print-force-style';
   style.innerHTML = `
+    @page { margin: 0; size: A4 landscape; }
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
     .section-bar-label { background-color: #CEEBF0 !important; }
     .section-letter { background-color: #3a75a7 !important; color: white !important; }
