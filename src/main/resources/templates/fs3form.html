@@ -1,11 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FS3 - Final Settlement System Form</title><style>:root {--fs-banner-bg: #6699bc;--fs-section-bg: #3a75a7;--fs-border: #88b0cc;--fs-text: #222;--fs-field-id: #3a75a7;}body {font-family: Arial, Helvetica, sans-serif;background-color: #f0f0f0;margin: 0;padding: 20px;color: var(--fs-text);}
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>FS3 - Final Settlement System Form</title><style>:root {--fs-banner-bg: #6699bc;--fs-section-bg: #3a75a7;--fs-border: #88b0cc;--fs-text: #222;--fs-field-id: #3a75a7;}body {font-family: Arial, Helvetica, sans-serif;background-color: #f0f0f0;margin: 0;padding: 20px;color: var(--fs-text);-webkit-print-color-adjust: exact;print-color-adjust: exact;}
 .filter-bar {width: 1050px; margin: 0 auto 16px auto; background: #fff; border: 1.5px solid var(--fs-border); border-radius: 4px; padding: 14px 20px; display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 13px;}
 .filter-bar label {font-weight: bold; color: var(--fs-section-bg);}
 .filter-bar select {border: 1.2px solid var(--fs-border); border-radius: 3px; padding: 5px 10px; font-size: 13px; color: #333; outline: none;}
 .filter-bar button {background: var(--fs-section-bg); color: white; border: none; border-radius: 3px; padding: 6px 18px; font-size: 13px; font-weight: bold; cursor: pointer;}
 .filter-bar button:hover {background: #2e5f87;}
+.btn-export {background: #2e7d32 !important;}
+.btn-export:hover {background: #1b5e20 !important;}
+@media print {
+  .filter-bar { display: none !important; }
+  body { background: white; padding: 0; }
+  .form-page { box-shadow: none; border: none; width: 100%; }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  .char-box {
+    width: 24px !important;
+    height: 24px !important;
+    line-height: 24px !important;
+    border: 1.2px solid #88b0cc !important;
+    display: inline-block !important;
+    text-align: center !important;
+  }
+  .box-grid {
+    display: flex !important;
+    flex-direction: row !important;
+  }
+}
 .form-page {width: 1050px;margin: 0 auto;background: #fff;position: relative;box-shadow: 0 0 15px rgba(0,0,0,0.1);border: 1.5px solid var(--fs-border);display: flex;flex-direction: row;align-items: stretch;}/* BANNER */.banner {width: 100%;line-height: 0;display: block;}.logo-box {width: 180px;font-size: 11px;font-weight: bold;line-height: 1.1;display: flex;align-items: center;}.logo-symbol {font-size: 36px;margin-right: 10px;color: #003366;}.fs3-large {font-size: 54px;font-weight: 900;margin: 0 30px;letter-spacing: -3px;}.banner-titles h1 {font-size: 19px;margin: 0;text-transform: uppercase;font-weight: bold;}.banner-titles p {margin: 0;font-size: 14px;}/* SECTION HEADERS */.section-bar {background-color: white;color: black;padding: 0;font-weight: bold;font-size: 13px;display: flex;align-items: stretch;border-top: 1.2px solid var(--fs-border);border-bottom: 1.2px solid var(--fs-border);}.section-bar-label {background-color: #CEEBF0;display: inline-flex;align-items: center;align-self: stretch;padding: 4px 10px;border-right: 1.5px solid var(--fs-border);font-size: 13px;font-weight: bold;}.section-letter {background-color: var(--fs-section-bg);color: white;border: 1.5px solid white;width: 20px;height: 20px;display: inline-flex;justify-content: center;align-items: center;margin-right: 8px;font-size: 12px;font-weight: bold;flex-shrink: 0;}/* TABLE STYLING */table {width: 100%;border-collapse: collapse;}table:first-of-type {border-top: none;}td {border: 1.2px solid var(--fs-border);padding: 4px 8px;vertical-align: top;font-size: 11px;}.label {font-weight: bold;display: block;margin-bottom: 2px;}.field-id {float: right;font-weight: bold;color: var(--fs-field-id);font-size: 11px;}/* INPUTS */input[type="text"] {width: 98%;border: none;border-bottom: 1px solid transparent;outline: none;font-size: 12px;background: transparent;}/* CHARACTER BOXES */.box-grid {display: flex;margin-top: 3px;}.char-box {width: 24px;height: 24px;border: 1.2px solid var(--fs-border);text-align: center;line-height: 24px;margin-right: -1.2px;font-weight: bold;background: white;}.sub-label-grid {display: flex;font-size: 8px;color: #666;margin-top: 2px;}/* SECTION C SPECIFIC */.c-table td:first-child {border: none;font-size: 11px;}.c-table td:nth-child(2) {border: none;font-weight: bold;font-size: 11px;color: var(--fs-field-id);white-space: nowrap;width: 40px;padding: 6px 6px;}/* SECTION E SPECIFIC */.e-table td {text-align: center;padding: 2px 3px;}.e-header {background-color: #eef4f9;font-weight: bold;}/* WATERMARK */.watermark {position: absolute;bottom: 50px;left: auto;right: 0;font-size: 450px;color: rgba(102, 153, 188, 0.08);font-weight: 900;z-index: 0;pointer-events: none;user-select: none;}/* SIDE TEXT */.side-text {writing-mode: vertical-rl;transform: rotate(180deg);font-size: 10px;color: var(--fs-section-bg);padding: 8px 4px;padding-bottom: 100px;white-space: nowrap;flex-shrink: 0;display: flex;align-items: center;justify-content: flex-start;border-right: 1.2px solid var(--fs-border);}.web-address {writing-mode: vertical-rl;transform: rotate(180deg);font-size: 10px;color: var(--fs-section-bg);padding: 8px 4px;padding-bottom: 100px;white-space: nowrap;flex-shrink: 0;display: flex;align-items: center;justify-content: flex-start;border-left: 1.2px solid var(--fs-border);}.form-content {flex: 1;min-width: 0;position: relative;overflow: hidden;}/* FOOTER */.footer-note {padding: 15px;font-size: 10px;font-style: italic;line-height: 1.3;}</style></head>
 <body>
 
@@ -26,8 +50,11 @@
               th:selected="${selectedYear != null and selectedYear == y}"></option>
     </select>
     <button type="submit">Generate Report</button>
-    <span th:if="${report != null}" style="margin-left:auto; color:green; font-weight:bold;">
-      ✓ Showing report for <span th:text="${report.firstName + ' ' + report.surname}"></span> — <span th:text="${report.taxYear}"></span>
+    <span th:if="${report != null}" style="display:flex; align-items:center; gap:10px;">
+      <button type="button" class="btn-export" onclick="window.print()">⬇ Export PDF</button>
+      <span style="color:green; font-weight:bold;">
+        ✓ <span th:text="${report.firstName + ' ' + report.surname}"></span> — <span th:text="${report.taxYear}"></span>
+      </span>
     </span>
   </form>
 </div>
@@ -103,9 +130,9 @@
     <div style="display:flex; align-items:center;" th:with="d=${fmt.dateDay(report?.periodFrom)},m=${fmt.dateMonth(report?.periodFrom)},y=${fmt.dateYear(report?.periodFrom)}">
       <div style="height:24px; border:1.2px solid var(--fs-border); border-right:none; padding:0 6px; display:flex; align-items:center; white-space:nowrap; font-weight:bold; font-size:11px; color:var(--fs-section-bg);">B1 From</div>
       <div class="char-box" th:text="${fmt.ch(d,0)}"></div><div class="char-box" th:text="${fmt.ch(d,1)}"></div>
-      <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);"></div>
+      <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); flex-shrink:0; box-sizing:border-box;"></div>
       <div class="char-box" th:text="${fmt.ch(m,0)}"></div><div class="char-box" th:text="${fmt.ch(m,1)}"></div>
-      <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);"></div>
+      <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); flex-shrink:0; box-sizing:border-box;"></div>
       <div class="char-box" th:text="${fmt.ch(y,0)}"></div><div class="char-box" th:text="${fmt.ch(y,1)}"></div><div class="char-box" th:text="${fmt.ch(y,2)}"></div><div class="char-box" th:text="${fmt.ch(y,3)}"></div>
     </div>
     <div style="display:flex; font-size:9px; color:#666; margin-top:1px;"><span style="visibility:hidden; padding:0 6px; font-size:11px;">B1 From</span><span style="width:24px; text-align:center;">d</span><span style="width:24px; text-align:center;">d</span><span style="width:6px;"></span><span style="width:24px; text-align:center;">m</span><span style="width:24px; text-align:center;">m</span><span style="width:6px;"></span><span style="width:24px; text-align:center;">y</span><span style="width:24px; text-align:center;">y</span><span style="width:24px; text-align:center;">y</span><span style="width:24px; text-align:center;">y</span></div>
@@ -117,9 +144,9 @@
     <div style="display:flex; align-items:center;" th:with="d=${fmt.dateDay(report?.periodTo)},m=${fmt.dateMonth(report?.periodTo)},y=${fmt.dateYear(report?.periodTo)}">
       <div style="height:24px; border:1.2px solid var(--fs-border); border-right:none; padding:0 6px; display:flex; align-items:center; white-space:nowrap; font-weight:bold; font-size:11px; color:var(--fs-section-bg);">B2 To</div>
       <div class="char-box" th:text="${fmt.ch(d,0)}"></div><div class="char-box" th:text="${fmt.ch(d,1)}"></div>
-      <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);"></div>
+      <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); flex-shrink:0; box-sizing:border-box;"></div>
       <div class="char-box" th:text="${fmt.ch(m,0)}"></div><div class="char-box" th:text="${fmt.ch(m,1)}"></div>
-      <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border);"></div>
+      <div style="width:6px; height:24px; border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); flex-shrink:0; box-sizing:border-box;"></div>
       <div class="char-box" th:text="${fmt.ch(y,0)}"></div><div class="char-box" th:text="${fmt.ch(y,1)}"></div><div class="char-box" th:text="${fmt.ch(y,2)}"></div><div class="char-box" th:text="${fmt.ch(y,3)}"></div>
     </div>
     <div style="display:flex; font-size:9px; color:#666; margin-top:1px;"><span style="visibility:hidden; padding:0 6px; font-size:11px;">B2 To</span><span style="width:24px; text-align:center;">d</span><span style="width:24px; text-align:center;">d</span><span style="width:6px;"></span><span style="width:24px; text-align:center;">m</span><span style="width:24px; text-align:center;">m</span><span style="width:6px;"></span><span style="width:24px; text-align:center;">y</span><span style="width:24px; text-align:center;">y</span><span style="width:24px; text-align:center;">y</span><span style="width:24px; text-align:center;">y</span></div>
