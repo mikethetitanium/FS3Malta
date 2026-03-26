@@ -1,7 +1,7 @@
 # FS3Malta Application
 
 ## Overview
-FS3Malta is a Spring Boot application designed to generate FS3 reports for employees. It includes features for generating PDFs, viewing reports, and managing employee data.
+FS3Malta is a Spring Boot application that generates FS3 (Final Settlement System) reports for employees in Malta. It features a fully styled on-screen form, dynamic data population via employee/year selection, and PDF export that matches the on-screen layout exactly.
 
 ---
 
@@ -13,7 +13,8 @@ FS3Malta is a Spring Boot application designed to generate FS3 reports for emplo
 
 ---
 
-## How to Run the Application
+## How to Run
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/mikethetitanium/FS3Malta.git
@@ -22,23 +23,27 @@ FS3Malta is a Spring Boot application designed to generate FS3 reports for emplo
    ```bash
    cd FS3Malta
    ```
-3. Build the project using Maven:
-   ```bash
-   mvn clean install
-   ```
-4. Run the application:
+3. Build and run:
    ```bash
    mvn spring-boot:run
    ```
-5. Open your browser and navigate to:
+4. Open your browser and navigate to:
    ```
    http://localhost:8080
    ```
 
 ---
 
+## How to Use
+
+1. The application opens to the blank FS3 form with a filter bar at the top.
+2. Select an **Employee** and **Year** from the dropdowns, then click **Generate Report**.
+3. The form populates with the employee's data across all sections (A–F).
+4. Click **Export PDF** to open the browser print dialog — select **Save as PDF** to download.
+
+---
+
 ## Accessing the H2 Database
-The application uses an embedded H2 database. To view the database:
 
 1. Ensure the H2 console is enabled in `application.properties`:
    ```properties
@@ -48,72 +53,58 @@ The application uses an embedded H2 database. To view the database:
    spring.datasource.username=sa
    spring.datasource.password=
    ```
-
-2. Open your browser and navigate to:
-   ```
-   http://localhost:8080/h2-console
-   ```
-
-3. Use the following credentials to log in:
+2. Navigate to `http://localhost:8080/h2-console`
+3. Login credentials:
    - **JDBC URL**: `jdbc:h2:mem:payrolldb`
    - **Username**: `sa`
-   - **Password**: (leave blank)
-
-4. Run SQL queries to view or manipulate data. For example, to view all employees:
-   ```sql
-   SELECT * FROM employees;
-   ```
+   - **Password**: *(leave blank)*
 
 ---
 
 ## Features
-- Generate FS3 reports for employees.
-- Export reports as PDFs.
-- View employee data and reports.
-- Embedded H2 database for development and testing.
+- Fully styled FS3 form matching the official Malta Tax & Customs Administration layout
+- Employee and year selection filter to populate the form dynamically
+- Character-box data entry style for ID cards, dates, and monetary values
+- PDF export that preserves all colors, borders, and layout
+- Embedded H2 database pre-seeded with sample employee and wage data
 
 ---
 
 ## Project Structure
-- **src/main/java**: Contains the application source code.
-- **src/main/resources/templates**: Thymeleaf templates for the web interface.
-- **src/main/resources/static**: Static resources (CSS, JS, images).
-- **src/main/resources/application.properties**: Application configuration.
+```
+src/main/java/com/FS3Malta/FS3Malta/
+├── controller/       # FS3ReportController — handles form and report endpoints
+├── Dto/              # FS3Report, SocialSecurityResult, WeeklyRecord
+├── model/            # Employee, WeeklyWage entities
+├── Repository/       # JPA repositories
+└── service/          # FS3ReportService, FS3FormatterService, SocialSecurityCalculator
+
+src/main/resources/
+├── templates/        # fs3form.html — main Thymeleaf template
+├── static/           # banner.png and other static assets
+└── application.properties
+```
 
 ---
 
-## Troubleshooting
-- **H2 Console Not Accessible**:
-  - Ensure `spring.h2.console.enabled=true` is set in `application.properties`.
-  - Verify the application is running on `http://localhost:8080`.
+## Screenshots
 
-- **Template Not Found**:
-  - Ensure the required Thymeleaf templates are in `src/main/resources/templates/`.
+**1. Blank form — select employee and year to generate**
+![Blank form](screenshots/1%20blank%20form.png)
 
-- **Database Issues**:
-  - Check the H2 console for errors.
-  - Verify the database schema matches the application requirements.
+**2. Populated report after selecting parameters and clicking Generate Report**
+![Populated report](screenshots/2%20populated%20report%20after%20selecting%20parameters%20and%20clicking%20generate%20report.png)
 
----
+**3. Report preview after clicking Export PDF**
+![Export preview](screenshots/3%20report%20preview%20after%20clicking%20export%20pdf.png)
 
-## Exported report and screenshots
+**4. Exported PDF**
+![Exported PDF](screenshots/4%20exported%20report%20to%20pdf.png)
 
-### Screenshots
-
-**1. Landing page**  
-![Landing page](https://github.com/mikethetitanium/FS3Malta/blob/master/screenshots/1%20Landing%20page.png)
-
-**2. Direct exported report**  
-![Direct exported report](https://github.com/mikethetitanium/FS3Malta/blob/master/screenshots/2%20Direct%20exported%20report.png)
-
-**3. View report on browser**  
-![View report on browser](https://github.com/mikethetitanium/FS3Malta/blob/master/screenshots/3%20view%20report%20on%20browser.png)
-
-### Exported PDF
-
-[Download FS3 Report PDF](https://github.com/mikethetitanium/FS3Malta/blob/master/screenshots/FS3_123456A_2025%20(1).pdf)
+### Sample Exported PDF
+[Download FS3 Report PDF](screenshots/FS3%20-%20Final%20Settlement%20System%20Form.pdf)
 
 ---
 
 ## Author
-Michael Mukosi John - Mercans offline assignment
+Michael Mukosi John — Mercans offline assignment
