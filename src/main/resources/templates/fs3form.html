@@ -126,95 +126,63 @@
 <div class="section-bar-label" style="align-self:stretch; display:flex; align-items:center;"><span class="section-letter">B</span> PERIOD</div>
 <!-- B1 From -->
 <div style="display:flex; align-items:center; padding:4px 8px; flex:1;">
-  <table style="border-collapse:collapse; width:auto;">
+  <table style="border-collapse:collapse; width:auto;" th:with="d=${fmt.dateDay(report?.periodFrom)},m=${fmt.dateMonth(report?.periodFrom)},y=${fmt.dateYear(report?.periodFrom)}">
     <tr>
-      <td style="border:1.2px solid var(--fs-border); padding:0 6px; font-weight:bold; font-size:11px; color:var(--fs-section-bg); white-space:nowrap; height:24px; vertical-align:middle;">B1 From</td>
-      <td th:with="d=${fmt.dateDay(report?.periodFrom)}" style="padding:0; border:none;">
-        <table style="border-collapse:collapse;"><tr>
-          <td class="char-box" style="border:1.2px solid var(--fs-border); width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(d,0)}"></td>
-          <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(d,1)}"></td>
-          <td style="border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); width:6px; padding:0;"></td>
-          <td th:with="m=${fmt.dateMonth(report?.periodFrom)}" style="padding:0; border:none;">
-            <table style="border-collapse:collapse;"><tr>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(m,0)}"></td>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(m,1)}"></td>
-            </tr></table>
-          </td>
-          <td style="border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); width:6px; padding:0;"></td>
-          <td th:with="y=${fmt.dateYear(report?.periodFrom)}" style="padding:0; border:none;">
-            <table style="border-collapse:collapse;"><tr>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,0)}"></td>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,1)}"></td>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,2)}"></td>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,3)}"></td>
-            </tr></table>
-          </td>
-        </tr></table>
-      </td>
+      <td style="border:1.2px solid var(--fs-border); border-right:none; padding:0 6px; font-weight:bold; font-size:11px; color:var(--fs-section-bg); white-space:nowrap; height:24px; vertical-align:middle;">B1 From</td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(d,0)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(d,1)}"></td>
+      <td style="border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); width:6px; padding:0;"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(m,0)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(m,1)}"></td>
+      <td style="border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); width:6px; padding:0;"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,0)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,1)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,2)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,3)}"></td>
     </tr>
     <tr>
-      <td style="border:none; padding:0; font-size:9px; color:#666; text-align:right; padding-right:4px;"></td>
-      <td style="border:none; padding:0;">
-        <table style="border-collapse:collapse; font-size:9px; color:#666;"><tr>
-          <td style="border:none; width:24px; text-align:center; padding:0;">d</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">d</td>
-          <td style="border:none; width:6px; padding:0;"></td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">m</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">m</td>
-          <td style="border:none; width:6px; padding:0;"></td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">y</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">y</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">y</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">y</td>
-        </tr></table>
-      </td>
+      <td style="border:none; padding:0;"></td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">d</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">d</td>
+      <td style="border:none; width:6px; padding:0;"></td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">m</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">m</td>
+      <td style="border:none; width:6px; padding:0;"></td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">y</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">y</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">y</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">y</td>
     </tr>
   </table>
 </div>
 <!-- B2 To -->
 <div style="display:flex; align-items:center; padding:4px 8px; flex:1;">
-  <table style="border-collapse:collapse; width:auto;">
+  <table style="border-collapse:collapse; width:auto;" th:with="d=${fmt.dateDay(report?.periodTo)},m=${fmt.dateMonth(report?.periodTo)},y=${fmt.dateYear(report?.periodTo)}">
     <tr>
-      <td style="border:1.2px solid var(--fs-border); padding:0 6px; font-weight:bold; font-size:11px; color:var(--fs-section-bg); white-space:nowrap; height:24px; vertical-align:middle;">B2 To</td>
-      <td th:with="d=${fmt.dateDay(report?.periodTo)}" style="padding:0; border:none;">
-        <table style="border-collapse:collapse;"><tr>
-          <td class="char-box" style="border:1.2px solid var(--fs-border); width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(d,0)}"></td>
-          <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(d,1)}"></td>
-          <td style="border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); width:6px; padding:0;"></td>
-          <td th:with="m=${fmt.dateMonth(report?.periodTo)}" style="padding:0; border:none;">
-            <table style="border-collapse:collapse;"><tr>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(m,0)}"></td>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(m,1)}"></td>
-            </tr></table>
-          </td>
-          <td style="border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); width:6px; padding:0;"></td>
-          <td th:with="y=${fmt.dateYear(report?.periodTo)}" style="padding:0; border:none;">
-            <table style="border-collapse:collapse;"><tr>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,0)}"></td>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,1)}"></td>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,2)}"></td>
-              <td class="char-box" style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,3)}"></td>
-            </tr></table>
-          </td>
-        </tr></table>
-      </td>
+      <td style="border:1.2px solid var(--fs-border); border-right:none; padding:0 6px; font-weight:bold; font-size:11px; color:var(--fs-section-bg); white-space:nowrap; height:24px; vertical-align:middle;">B2 To</td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(d,0)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(d,1)}"></td>
+      <td style="border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); width:6px; padding:0;"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(m,0)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(m,1)}"></td>
+      <td style="border-top:1.2px solid var(--fs-border); border-bottom:1.2px solid var(--fs-border); width:6px; padding:0;"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,0)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,1)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,2)}"></td>
+      <td style="border:1.2px solid var(--fs-border); border-left:none; width:24px; height:24px; text-align:center; padding:0; font-weight:bold;" th:text="${fmt.ch(y,3)}"></td>
     </tr>
     <tr>
       <td style="border:none; padding:0;"></td>
-      <td style="border:none; padding:0;">
-        <table style="border-collapse:collapse; font-size:9px; color:#666;"><tr>
-          <td style="border:none; width:24px; text-align:center; padding:0;">d</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">d</td>
-          <td style="border:none; width:6px; padding:0;"></td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">m</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">m</td>
-          <td style="border:none; width:6px; padding:0;"></td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">y</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">y</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">y</td>
-          <td style="border:none; width:24px; text-align:center; padding:0;">y</td>
-        </tr></table>
-      </td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">d</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">d</td>
+      <td style="border:none; width:6px; padding:0;"></td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">m</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">m</td>
+      <td style="border:none; width:6px; padding:0;"></td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">y</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">y</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">y</td>
+      <td style="border:none; width:24px; text-align:center; padding:0; font-size:9px; color:#666;">y</td>
     </tr>
   </table>
 </div>
