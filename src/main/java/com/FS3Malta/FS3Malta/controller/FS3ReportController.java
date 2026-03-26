@@ -5,6 +5,7 @@ import com.FS3Malta.FS3Malta.Dto.FS3Report;
 import com.FS3Malta.FS3Malta.Repository.EmployeeRepository;
 import com.FS3Malta.FS3Malta.service.FS3ReportService;
 import com.FS3Malta.FS3Malta.service.FS3PDFGenerator;
+import com.FS3Malta.FS3Malta.service.FS3FormatterService;
 import com.itextpdf.text.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +28,9 @@ public class FS3ReportController {
     private FS3PDFGenerator pdfGenerator;
 
     @Autowired
+    private FS3FormatterService fmt;
+
+    @Autowired
     private EmployeeRepository employeeRepository;
 
     @GetMapping("/")
@@ -39,7 +43,8 @@ public class FS3ReportController {
         List<Employee> employees = employeeRepository.findAll();
         model.addAttribute("employees", employees);
         model.addAttribute("years", new int[]{2022,2023, 2024,2025});
-        return "fs3-form";
+        model.addAttribute("fmt", fmt);
+        return "fs3form";
     }
 
     @PostMapping("/reports/fs3/generate")
@@ -68,6 +73,7 @@ public class FS3ReportController {
             Model model) {
         FS3Report report = reportService.generateReport(employeeId, year);
         model.addAttribute("report", report);
-        return "fs3-report";
+        model.addAttribute("fmt", fmt);
+        return "fs3form";
     }
 }
