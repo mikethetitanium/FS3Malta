@@ -42,8 +42,24 @@ public class FS3ReportController {
     public String showFS3Form(Model model) {
         List<Employee> employees = employeeRepository.findAll();
         model.addAttribute("employees", employees);
-        model.addAttribute("years", new int[]{2022,2023, 2024,2025});
+        model.addAttribute("years", new int[]{2022, 2023, 2024, 2025});
         model.addAttribute("fmt", fmt);
+        return "fs3form";
+    }
+
+    @GetMapping("/reports/fs3/view")
+    public String viewFS3ReportGet(
+            @RequestParam Long employeeId,
+            @RequestParam int year,
+            Model model) {
+        List<Employee> employees = employeeRepository.findAll();
+        model.addAttribute("employees", employees);
+        model.addAttribute("years", new int[]{2022, 2023, 2024, 2025});
+        model.addAttribute("selectedEmployeeId", employeeId);
+        model.addAttribute("selectedYear", year);
+        model.addAttribute("fmt", fmt);
+        FS3Report report = reportService.generateReport(employeeId, year);
+        model.addAttribute("report", report);
         return "fs3form";
     }
 
